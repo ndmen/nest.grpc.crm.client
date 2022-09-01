@@ -6,7 +6,7 @@ import { UsersNestService } from './users.service';
 @Controller('users')
 export class UsersController {
   private logger = new Logger('UsersController');
-  private usersNestService: UsersNestService;
+  constructor(private usersNestService: UsersNestService, ) {}
 
   @Get(':id')
   getUserById(@Param('id') id: number): Observable<User> {
