@@ -9,7 +9,7 @@ export class UsersController {
   constructor(private usersNestService: UsersNestService, ) {}
 
   @Get(':id')
-  getUserById(@Param('id') id: number): Observable<User> {
+  getUserById(@Param('id') id: UserById): Observable<User> {
     this.logger.log('Call HTTP method getUserById with id: ' + id);
     return this.usersNestService.getUser(+id);
   }
