@@ -1,3 +1,4 @@
+import { Metadata } from '@grpc/grpc-js';
 import { Logger, OnModuleInit, Injectable } from '@nestjs/common';
 import { Client, ClientGrpc, Transport } from '@nestjs/microservices';
 import { join } from 'path';
@@ -25,5 +26,10 @@ export class UsersNestService implements OnModuleInit {
   getUser(id: number): Observable<User> {
     this.logger.log('Call gRPC method FindOne with id: ' + id);
     return this.usersService.FindOne({ id: id });
+  }
+
+  getUsers(id: Observable<UserById>): Observable<User> {
+    this.logger.log('Call gRPC method FindMany with id: ' + id);
+    return this.usersService.FindMany(id);
   }
 }
